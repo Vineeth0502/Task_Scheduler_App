@@ -2,74 +2,228 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NotifyIt - Sign Up</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styless.css" />
-    <link rel="icon" href="./img/favicon4.png" type="image/x-icon">
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Scheduler - Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="./img/favicon4.png" type="image/x-icon">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffecd2);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 500px;
+      max-width: 90%;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    h2 {
+      color: #555;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .loginsignup-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 15px;
+      border: none;
+      border-bottom: 2px solid #ddd;
+      background: transparent;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .input-group label {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #777;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus ~ label,
+    .input-group input:valid ~ label {
+      top: -5px;
+      font-size: 12px;
+      color: #ff6b6b;
+    }
+
+    .input-group input:focus {
+      border-bottom-color: #ff6b6b;
+    }
+
+    button {
+      background: #ff6b6b;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      margin-bottom: 15px;
+    }
+
+    button:hover {
+      background: #ff8787;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .errorMessage {
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .successMessage {
+      color: #28a745;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 20px;
+      color: #555;
+    }
+
+    p a {
+      color: #ff6b6b;
+      text-decoration: none;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
 
 <body>
-  <div class="box" id="heading">
-    <h1>NotifyIt</h1>
-  </div>
-
-  <div class="box">
+  <div class="container">
+    <h1>Task Scheduler</h1>
     <form id="signupForm" class="loginsignup-form" action="/register" method="post">
       <h2>Sign Up</h2>
 
-      <% if (typeof errorMessage  !== 'undefined') { %>
+      <% if (typeof errorMessage !== 'undefined') { %>
         <p class="errorMessage"><%= errorMessage %></p>
-      <% } %> 
+      <% } %>
 
-      <% if (typeof successMessage  !== 'undefined') { %>
+      <% if (typeof successMessage !== 'undefined') { %>
         <p class="successMessage"><%= successMessage %></p>
       <% } %>
-      <% var emailText %>
 
-      <div class="row">
-        <div class="col-md-6">
-          <input type="text" name="firstName" placeholder="Enter First Name" required />
-        </div>
-        <div class="col-md-6">
-          <input type="text" name="lastName" placeholder="Enter Last Name" required />
-        </div>
+      <div class="input-group">
+        <input type="text" name="firstName" required />
+        <label>First Name</label>
       </div>
-      <input type="email" name="email" value="<%= emailText %>" placeholder="Enter Email Address" required/>
 
-      <input type="text" name="otp" placeholder="Enter OTP" required />
-        
-      <input type="password" name="password" placeholder="Create New Password" required />
-       
-      <input type="password" name="confirmPassword" placeholder="Confirm New Password" required />
-        
+      <div class="input-group">
+        <input type="text" name="lastName" required />
+        <label>Last Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="email" value="<%= emailText %>" required />
+        <label>Email Address</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" name="otp" required />
+        <label>Enter OTP</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="password" required />
+        <label>Create Password</label>
+      </div>
+
+      <div class="input-group">
+        <input type="password" name="confirmPassword" required />
+        <label>Confirm Password</label>
+      </div>
+
       <button type="submit">Sign Up</button>
+
       <p>Already have an account? <a href="/">Log In</a></p>
-      </div>
-      
     </form>
   </div>
 
-  <footer>&copy; 2023 Pruthviraj Chaudhari</footer>
+  <footer>&copy; 2024 Task Scheduler</footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.querySelector(".loginsignup-form");
       const passwordInput = form.querySelector("input[name='password']");
       const confirmPasswordInput = form.querySelector("input[name='confirmPassword']");
-  
+
       form.addEventListener("submit", function (event) {
         if (passwordInput.value.length < 6) {
-          event.preventDefault(); // Prevent form submission if password is less than 6 characters
+          event.preventDefault();
           alert("Password must be at least 6 characters long.");
         } else if (passwordInput.value !== confirmPasswordInput.value) {
-          event.preventDefault(); // Prevent form submission if passwords don't match
+          event.preventDefault();
           alert("Passwords do not match. Please confirm your password.");
         }
       });
     });
   </script>
-
 </body>
+
 </html>

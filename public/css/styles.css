@@ -1,6 +1,6 @@
 html {
-  background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+  background-color: #ff8787;
+  background-image: -webkit-linear-gradient(65deg, #ff8787 50%, #ff8787 50%);
   min-height: 100vh;
   font-family: 'helvetica neue';
 }
@@ -20,7 +20,7 @@ h1 {
 }
 
 #heading {
-  background-color: #A683E3;
+  background-color: #ff8787;
   text-align: center;
 }
 
@@ -47,7 +47,6 @@ input[type="checkbox"] {
 
 p {
   margin: 0;
-  padding: 20px;
   font-size: 20px;
   font-weight: 200;
   color: #00204a;
@@ -110,7 +109,7 @@ footer {
   width: 50px;
   border-radius: 50%;
   border-color: transparent;
-  background-color: #A683E3;
+  background-color: #fff;
   color: #fff;
   font-size: 30px;
   padding-bottom: 6px;
@@ -127,13 +126,12 @@ footer {
 }
 
 input[type="time"] {
-  border: 1px solid #A683E3;
+  border: 1px solid #ff8787;
   padding: 5px;
   border-radius: 4px;
   font-size: 16px;
   background-color: #f2f2f2;
   position: relative;
-  right: 20px;
 }
 
 

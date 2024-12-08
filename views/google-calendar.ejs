@@ -1,46 +1,121 @@
 <%- include("header") -%>
-<h1>Your Google Calendar Events</h1>
+<h1 class="page-title">Your Google Calendar Events</h1>
 
 <div class="calendar-events">
     <% if (events && events.length) { %>
         <% events.forEach(event => { %>
-            <div class="event">
-                <h3><%= event.summary %></h3>
-                <p>Start: <%= event.start %></p>
-                <p>End: <%= event.end %></p>
+            <div class="event" data-aos="fade-up">
+                <h3><i class="fas fa-calendar-alt"></i> <%= event.summary %></h3>
+                <p><strong>Start:</strong> <%= event.start %></p>
+                <p><strong>End:</strong> <%= event.end %></p>
             </div>
         <% }); %>
     <% } else { %>
-        <p>No upcoming events found in your Google Calendar.</p>
+        <p class="no-events" data-aos="fade-up">
+            <i class="fas fa-exclamation-circle"></i> No upcoming events found in your Google Calendar.
+        </p>
     <% } %>
 </div>
 <%- include("footer") -%>
 
+<!-- Updated Styling -->
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffecd2);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    @keyframes gradientBG {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .page-title {
+        text-align: center;
+        font-size: 2.5em;
+        color: #ff6b6b;
+        margin: 20px 0;
+        font-weight: 600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .calendar-events {
-        max-width: 600px;
-        margin: 20px auto;
+        max-width: 700px;
+        margin: 40px auto;
         padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     .calendar-events .event {
         margin-bottom: 20px;
-        padding: 15px;
-        background: #f9f9f9;
-        border-radius: 6px;
-        border: 1px solid #ddd;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-left: 6px solid #ff6b6b;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .calendar-events .event:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .calendar-events .event h3 {
         margin: 0 0 10px;
+        color: #ff6b6b;
+        font-size: 1.5em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .calendar-events .event p {
         margin: 5px 0;
-        font-size: 14px;
+        font-size: 1rem;
         color: #555;
     }
+
+    .calendar-events .event p strong {
+        color: #333;
+    }
+
+    .no-events {
+        text-align: center;
+        font-size: 1.2em;
+        color: #ff6b6b;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 </style>
+
+<!-- AOS Animation Script -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    });
+</script>
