@@ -1,0 +1,46 @@
+<%- include("header") -%>
+<h1>Your Google Calendar Events</h1>
+
+<div class="calendar-events">
+    <% if (events && events.length) { %>
+        <% events.forEach(event => { %>
+            <div class="event">
+                <h3><%= event.summary %></h3>
+                <p>Start: <%= event.start %></p>
+                <p>End: <%= event.end %></p>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>No upcoming events found in your Google Calendar.</p>
+    <% } %>
+</div>
+<%- include("footer") -%>
+
+<style>
+    .calendar-events {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar-events .event {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+    }
+
+    .calendar-events .event h3 {
+        margin: 0 0 10px;
+    }
+
+    .calendar-events .event p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #555;
+    }
+</style>
