@@ -63,7 +63,7 @@ const otpTemplate = (otp) => {
 			}
 	
 			#heading {
-				background-color: #A683E3;
+				background-color: #ff8787;
 				text-align: center;
 			}
 	
@@ -86,7 +86,7 @@ const otpTemplate = (otp) => {
 	<body>
 		<div class="container">
 			<div class="box" id="heading">
-				<h1>Task_Scheduler</h1>
+				<h1>Task Scheduler</h1>
 			</div>
 			<div class="message">New User Verification</div>
 			<div class="body">

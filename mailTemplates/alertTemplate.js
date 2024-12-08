@@ -64,7 +64,7 @@ const alertTemplate = (userName, taskName, deadline) => {
             }
     
             #heading {
-                background-color: #A683E3;
+                background-color: #ff8787;
                 text-align: center;
             }
     
